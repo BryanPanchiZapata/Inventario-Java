@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+C:\Users\bryan\Desktop\KrakeDev\Programacion_BryanPanchi\Modulo_III\WorkspaceJava\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1556149133.index
+\inventarios\src\main\java
+C:\Users\bryan\Desktop\KrakeDev\Programacion_BryanPanchi\Modulo_III\WorkspaceJava\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1012163473.index
+\inventarios\src\main\java
