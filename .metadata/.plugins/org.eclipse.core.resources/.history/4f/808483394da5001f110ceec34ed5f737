@@ -45,5 +45,6 @@ public class ServiciosProductos {
 			e.printStackTrace();
 			return Response.serverError().build();
 		}
+
 	}
 }

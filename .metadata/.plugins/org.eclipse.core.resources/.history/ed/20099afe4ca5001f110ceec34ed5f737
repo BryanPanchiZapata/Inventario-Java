@@ -12,7 +12,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.krakedev.inventarios.bdd.ProductosBDD;
+import com.krakedev.inventarios.bdd.ProveedoresBDD;
 import com.krakedev.inventarios.entidades.Producto;
+import com.krakedev.inventarios.entidades.Proveedor;
 import com.krakedev.inventarios.excepciones.KrakeDevException;
 
 @Path("productos")
@@ -36,14 +38,15 @@ public class ServiciosProductos {
 	@Path("crear")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response insertar(Producto producto) {
-		ProductosBDD prod = new ProductosBDD();
+	public Response insertar(Proveedor proveedor) {
+		ProveedoresBDD prov = new ProveedoresBDD();
 		try {
-			prod.crearProducto(producto);
+			prov.insertarProveedor(proveedor);
 			return Response.ok().build();
 		} catch (KrakeDevException e) {
 			e.printStackTrace();
 			return Response.serverError().build();
 		}
+
 	}
 }

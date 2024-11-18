@@ -67,10 +67,11 @@ public class ProductosBDD {
 	public void crearProducto(Producto producto) throws KrakeDevException{
 		Connection con = null;
 		PreparedStatement ps = null;
+		Producto createProducto = null;
 		try {
 			con = ConexionBDD.obtenerConexion();
 			ps = con.prepareStatement(
-					"insert into productos (nombre, udm, precio_venta, tiene_iva, costo, categoria, stock) values (?,?,?,?,?,?,?)");
+					"insert into productos (nombre, udm,precio_venta,tiene_iva, costo, categoria, stock) values ('?,?,?,?,?,?,?)");
 			ps.setString(1, producto.getNombre());
 			ps.setString(2, producto.getUnidadMedida().getNombre());
 			ps.setBigDecimal(3, producto.getPrecioVenta());

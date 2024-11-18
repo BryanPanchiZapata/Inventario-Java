@@ -64,28 +64,18 @@ public class ProductosBDD {
 	}
 
 	// Método crear producto
-	public void crearProducto(Producto producto) throws KrakeDevException{
+	public void crearProducto(Producto producto) {
 		Connection con = null;
 		PreparedStatement ps = null;
+		Producto createProducto = null;
 		try {
 			con = ConexionBDD.obtenerConexion();
 			ps = con.prepareStatement(
-					"insert into productos (nombre, udm, precio_venta, tiene_iva, costo, categoria, stock) values (?,?,?,?,?,?,?)");
-			ps.setString(1, producto.getNombre());
-			ps.setString(2, producto.getUnidadMedida().getNombre());
-			ps.setBigDecimal(3, producto.getPrecioVenta());
-			ps.setBoolean(4, producto.isTieneIva());
-			ps.setBigDecimal(5, producto.getCoste());
-			ps.setInt(6, producto.getCategoria().getCodigo());
-			ps.setInt(7, producto.getStock());
-			
-			ps.executeUpdate();
-
+					"insert into productos (nombre, udm,precio_venta,tiene_iva, costo, categoria, stock) values ('?,?,?,?,?,?,?)");
 		} catch (KrakeDevException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new KrakeDevException("Error al consultar. Detalle: " + e.getMessage());
 		}
 
 	}

@@ -38,12 +38,6 @@ public class ServiciosProductos {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response insertar(Producto producto) {
 		ProductosBDD prod = new ProductosBDD();
-		try {
-			prod.crearProducto(producto);
-			return Response.ok().build();
-		} catch (KrakeDevException e) {
-			e.printStackTrace();
-			return Response.serverError().build();
-		}
+
 	}
 }

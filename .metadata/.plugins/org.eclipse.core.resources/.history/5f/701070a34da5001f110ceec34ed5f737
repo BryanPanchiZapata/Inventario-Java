@@ -40,7 +40,7 @@ public class ServiciosProductos {
 		ProductosBDD prod = new ProductosBDD();
 		try {
 			prod.crearProducto(producto);
-			return Response.ok().build();
+			return Response.ok(productos).build();
 		} catch (KrakeDevException e) {
 			e.printStackTrace();
 			return Response.serverError().build();
