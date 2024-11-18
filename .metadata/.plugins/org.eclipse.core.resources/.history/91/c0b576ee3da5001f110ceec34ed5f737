@@ -1,0 +1,19 @@
+package com.krakedev.inventarios.bdd;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import com.krakedev.inventarios.entidades.Producto;
+
+public class ProductosBDD {
+//Método buscar Producto
+	public ArrayList<Producto> buscarProducto(String codProd) {
+		ArrayList<Producto> productos = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Producto producto = null;
+	}
+}

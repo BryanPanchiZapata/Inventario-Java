@@ -2,4 +2,7 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.bdd.TiposDocumentosBDD"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.TipoDocumentos"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.utils.ConexionBDD"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.excepciones.KrakeDevException"/>
 </qualifiedTypeNameHistroy>

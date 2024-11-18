@@ -1,0 +1,7 @@
+package com.krakedev.inventarios.entidades;
+
+public class UnidadDeMedida {
+	private String nombre;
+private String descripcion
+	private CategoriaUDM categoriaUDM;
+}
