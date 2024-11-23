@@ -1,0 +1,9 @@
+package com.krakedev.inventarios.bdd;
+
+import com.krakedev.inventarios.entidades.Pedido;
+
+public class PedidosBDD {
+	public void insertar(Pedido pedido) {
+		
+	}
+}

@@ -1,0 +1,12 @@
+package com.krakedev.inventarios.entidades;
+
+import java.math.BigDecimal;
+
+public class DetallePedido {
+	private int code;
+	private Pedido cabeceraPedido;
+	private Producto producto;
+	private int cantidad;
+	private BigDecimal subtotal;
+	private int cantidadRecibida;
+}

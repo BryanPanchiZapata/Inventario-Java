@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.krakedev.inventarios.entidades.EstadoPedido.java&apos; to &apos;Pedido.java&apos;&#x0D;&#x0A;- Original project: &apos;inventarios&apos;&#x0D;&#x0A;- Original element: &apos;com.krakedev.inventarios.entidades.EstadoPedido.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.krakedev.inventarios.entidades.Pedido.java&apos;" description="Rename compilation unit &apos;EstadoPedido.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.krakedev.inventarios.entidades{EstadoPedido.java" name="Pedido.java" references="false" stamp="1732389965882" version="1.0"/>
+</session>

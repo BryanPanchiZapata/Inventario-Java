@@ -1,0 +1,43 @@
+package com.krakedev.inventarios.bdd;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.krakedev.inventarios.entidades.Pedido;
+import com.krakedev.inventarios.excepciones.KrakeDevException;
+import com.krakedev.inventarios.utils.ConexionBDD;
+
+public class PedidosBDD {
+	public void insertar(Pedido pedido) throws KrakeDevException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rsClave = null;
+		int codigoCabecera = 0;
+
+		try {
+			con = ConexionBDD.obtenerConexion();
+			ps = con.prepareStatement("insert into (proveedor, fecha, estado_pedido) values (?,?,?)",
+					Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, pedido.getProveedor().getIdentificador());
+			ps.setDate(2, new java.sql.Date(pedido.getFecha().getTime()));
+
+			ps.executeUpdate();
+
+			if (rsClave.next()) {
+				codigoCabecera = rsClave.getInt(1);
+			}
+			System.out.println("-----> "+ codigoCabecera);
+
+		} catch (KrakeDevException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new KrakeDevException("Error al insertar el pedido. Detalle: " + e.getMessage());
+		}
+
+	}
+}

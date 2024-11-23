@@ -2,7 +2,14 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.bdd.TiposDocumentosBDD"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.TipoDocumentos"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.Categoria"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.Producto"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.bdd.ProductosBDD"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.utils.ConexionBDD"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.UnidadDeMedida"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.excepciones.KrakeDevException"/>
 </qualifiedTypeNameHistroy>
