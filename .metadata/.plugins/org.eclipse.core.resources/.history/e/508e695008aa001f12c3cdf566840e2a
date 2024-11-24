@@ -1,0 +1,12 @@
+package com.krakedev.inventarios.entidades;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+public class CabeceraVentas {
+	private int code;
+	private Date fecha;
+	private BigDecimal totalSinIva;
+	private BigDecimal iva;
+	private BigDecimal total;
+}

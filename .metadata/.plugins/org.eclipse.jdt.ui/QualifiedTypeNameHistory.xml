@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.bdd.TiposDocumentosBDD"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.TipoDocumentos"/>
-    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.Categoria"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.Producto"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.bdd.ProductosBDD"/>
@@ -11,9 +10,14 @@
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.DetallePedido"/>
-    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.utils.ConexionBDD"/>
     <fullyQualifiedTypeName name="com.krakedev.inventarios.excepciones.KrakeDevException"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.EstadoPedido"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+    <fullyQualifiedTypeName name="com.krakedev.inventarios.entidades.DetalleVentas"/>
 </qualifiedTypeNameHistroy>
