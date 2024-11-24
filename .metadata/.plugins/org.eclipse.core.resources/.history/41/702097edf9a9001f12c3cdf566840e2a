@@ -75,9 +75,6 @@ public class PedidosBDD {
 		PreparedStatement psDet = null;
 		PreparedStatement psHis = null;
 
-		Date fechaActual = new Date();
-		java.sql.Timestamp fechaTimeSQL = new java.sql.Timestamp(fechaActual.getTime());
-
 		try {
 			con = ConexionBDD.obtenerConexion();
 			ps = con.prepareStatement("update cabecera_pedido set estado_pedido = ? where numero = ?");
@@ -101,13 +98,6 @@ public class PedidosBDD {
 
 				psHis = con.prepareStatement(
 						"insert into historial_stock (fecha, referencia, producto, cantidad) values (?,?,?,?)");
-				psHis.setTimestamp(1, fechaTimeSQL);
-				psHis.setString(2, "PEDIDO " + pedido.getCodigo());
-				psHis.setInt(3, det.getProducto().getCodigo());
-				psHis.setInt(4, det.getCantidadRecibida());
-				
-				System.out.println("Inserta istorial");
-				psHis.executeUpdate();
 
 			}
 		} catch (KrakeDevException e) {

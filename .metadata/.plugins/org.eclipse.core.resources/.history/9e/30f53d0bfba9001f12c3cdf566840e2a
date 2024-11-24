@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.krakedev.inventarios.entidades.DetallePedido;
+import com.krakedev.inventarios.entidades.HistorialStock;
 import com.krakedev.inventarios.entidades.Pedido;
 import com.krakedev.inventarios.excepciones.KrakeDevException;
 import com.krakedev.inventarios.utils.ConexionBDD;
@@ -102,12 +103,8 @@ public class PedidosBDD {
 				psHis = con.prepareStatement(
 						"insert into historial_stock (fecha, referencia, producto, cantidad) values (?,?,?,?)");
 				psHis.setTimestamp(1, fechaTimeSQL);
-				psHis.setString(2, "PEDIDO " + pedido.getCodigo());
+				psHis.setString(2, "PEDIDO" + pedido.getCodigo());
 				psHis.setInt(3, det.getProducto().getCodigo());
-				psHis.setInt(4, det.getCantidadRecibida());
-				
-				System.out.println("Inserta istorial");
-				psHis.executeUpdate();
 
 			}
 		} catch (KrakeDevException e) {

@@ -33,7 +33,7 @@ public class ServiciosPedidos {
 	public Response recibir(Pedido pedido) {
 		PedidosBDD pe = new PedidosBDD();
 		try {
-			pe.actualizarPedido(pedido);
+			pe.actualizar(pedido);
 			return Response.ok().build();
 		} catch (KrakeDevException e) {
 			e.printStackTrace();

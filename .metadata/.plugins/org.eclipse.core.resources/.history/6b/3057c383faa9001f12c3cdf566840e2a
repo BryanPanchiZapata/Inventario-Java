@@ -102,12 +102,8 @@ public class PedidosBDD {
 				psHis = con.prepareStatement(
 						"insert into historial_stock (fecha, referencia, producto, cantidad) values (?,?,?,?)");
 				psHis.setTimestamp(1, fechaTimeSQL);
-				psHis.setString(2, "PEDIDO " + pedido.getCodigo());
-				psHis.setInt(3, det.getProducto().getCodigo());
-				psHis.setInt(4, det.getCantidadRecibida());
-				
-				System.out.println("Inserta istorial");
-				psHis.executeUpdate();
+				psHis.setString(2, "PEDIDO" + pedido.getCodigo());
+				psHis.setInt(3, );
 
 			}
 		} catch (KrakeDevException e) {

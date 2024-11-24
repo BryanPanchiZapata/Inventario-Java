@@ -73,10 +73,6 @@ public class PedidosBDD {
 		Connection con = null;
 		PreparedStatement ps = null;
 		PreparedStatement psDet = null;
-		PreparedStatement psHis = null;
-
-		Date fechaActual = new Date();
-		java.sql.Timestamp fechaTimeSQL = new java.sql.Timestamp(fechaActual.getTime());
 
 		try {
 			con = ConexionBDD.obtenerConexion();
@@ -92,23 +88,13 @@ public class PedidosBDD {
 				psDet = con
 						.prepareStatement("update detalle_pedido set catidad_recibida=? , subtotal=? where codigo=?");
 				BigDecimal precioVenta = det.getProducto().getPrecioVenta();
-				BigDecimal cantidad = new BigDecimal(det.getCantidadRecibida());
-				BigDecimal subtotal = precioVenta.multiply(cantidad);
+                BigDecimal cantidad = new BigDecimal(det.getCantidadRecibida());
+                BigDecimal subtotal = precioVenta.multiply(cantidad);
 				psDet.setInt(1, det.getCantidadRecibida());
 				psDet.setBigDecimal(2, subtotal);
 				psDet.setInt(3, det.getCode());
+
 				psDet.executeUpdate();
-
-				psHis = con.prepareStatement(
-						"insert into historial_stock (fecha, referencia, producto, cantidad) values (?,?,?,?)");
-				psHis.setTimestamp(1, fechaTimeSQL);
-				psHis.setString(2, "PEDIDO " + pedido.getCodigo());
-				psHis.setInt(3, det.getProducto().getCodigo());
-				psHis.setInt(4, det.getCantidadRecibida());
-				
-				System.out.println("Inserta istorial");
-				psHis.executeUpdate();
-
 			}
 		} catch (KrakeDevException e) {
 			e.printStackTrace();
