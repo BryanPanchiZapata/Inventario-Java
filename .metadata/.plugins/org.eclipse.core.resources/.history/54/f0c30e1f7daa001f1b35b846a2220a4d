@@ -1,0 +1,56 @@
+package com.krakedev.inventarios.bdd;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.krakedev.inventarios.entidades.Categoria;
+import com.krakedev.inventarios.excepciones.KrakeDevException;
+import com.krakedev.inventarios.utils.ConexionBDD;
+
+public class CategoriaBDD {
+	public void insertarCategoria(Categoria categoria) throws KrakeDevException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rsKey = null;
+		int codeCategory = 0;
+
+		try {
+			con = ConexionBDD.obtenerConexion();
+			ps = con.prepareStatement("insert into categorias (nombre, categoria) values (?,?)",
+					Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, categoria.getNombre());
+			ps.setInt(2, categoria.getCategoriaPadre().getCodigo());
+			ps.executeUpdate();
+			rsKey = ps.getGeneratedKeys();
+			if (rsKey.next()) {
+				codeCategory = rsKey.getInt(1);
+			}
+			System.out.println(codeCategory);
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			throw new KrakeDevException("Error al insertar la categoria. Detalle: " + e.getMessage());
+		}
+	}
+
+	// Update category
+
+	public void updateCategory(Categoria categoria) {
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		try {
+			con = ConexionBDD.obtenerConexion();
+			ps = con.prepareStatement("update categorias set nombre=? categoria=? where codigo_cat=?");
+			ps.setString(1,categoria.getNombre());
+			ps.setInt(2, categoria.getCategoriaPadre().getCodigo());
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

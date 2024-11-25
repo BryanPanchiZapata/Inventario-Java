@@ -1,0 +1,12 @@
+package com.krakedev.inventarios.bdd;
+
+import java.sql.PreparedStatement;
+
+import com.krakedev.inventarios.entidades.Categoria;
+
+public class CategoriaBDD {
+	public void insertarCategoria(Categoria categoria) {
+		Connection con = null;
+		PreparedStatement ps = null;
+	}
+}

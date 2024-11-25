@@ -1,0 +1,23 @@
+package com.krakedev.inventarios.bdd;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+
+import com.krakedev.inventarios.entidades.Categoria;
+import com.krakedev.inventarios.excepciones.KrakeDevException;
+import com.krakedev.inventarios.utils.ConexionBDD;
+
+public class CategoriaBDD {
+	public void insertarCategoria(Categoria categoria) {
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		try {
+			con = ConexionBDD.obtenerConexion();
+			ps = con.prepareStatement("insert into categorias (nombre, categoria) values (?,?)",Statement.RETURN_GENERATED_KEYS);
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+		}
+	}
+}

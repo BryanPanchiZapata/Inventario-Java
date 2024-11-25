@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.krakedev.inventarios.entidades.DetallePedido;
+import com.krakedev.inventarios.entidades.EstadoPedido;
 import com.krakedev.inventarios.entidades.Pedido;
+import com.krakedev.inventarios.entidades.Producto;
+import com.krakedev.inventarios.entidades.Proveedor;
 import com.krakedev.inventarios.excepciones.KrakeDevException;
 import com.krakedev.inventarios.utils.ConexionBDD;
 
@@ -105,7 +108,7 @@ public class PedidosBDD {
 				psHis.setString(2, "PEDIDO" + pedido.getCodigo());
 				psHis.setInt(3, det.getProducto().getCodigo());
 				psHis.setInt(4, det.getCantidad());
-				
+
 				psHis.executeUpdate();
 
 			}
@@ -116,5 +119,58 @@ public class PedidosBDD {
 			throw new KrakeDevException("Error al insertar el pedido. Detalle: " + e.getMessage());
 		}
 
+	}
+
+	public ArrayList<Pedido> retrieveProveedor(String identificador) throws KrakeDevException {
+		ArrayList<Pedido> listPedidos = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Pedido p = null;
+
+		try {
+			con = ConexionBDD.obtenerConexion();
+			ps = con.prepareStatement("SELECT cp.proveedor, pr.nombre, dp.codigo, cp.fecha, cp.estado_pedido, "
+					+ "dp.cabecera_pedido, dp.producto, dp.cantidad, dp.subtotal::numeric, dp.catidad_recibida "
+					+ "FROM cabecera_pedido cp, detalle_pedido dp, productos pr " + "WHERE cp.proveedor = ? "
+					+ "AND dp.cabecera_pedido = cp.numero " + "AND pr.codigo_prod = dp.producto;");
+
+			ps.setString(1, identificador);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				String nombre = rs.getString("nombre");
+				int codigoProd = rs.getInt("producto");
+				Producto prod = new Producto(codigoProd, nombre, null, null, false, null, null, 0);
+
+				int codigo = rs.getInt("codigo");
+				int cabeceraPedido = rs.getInt("cabecera_pedido");
+				int cantidad = rs.getInt("cantidad");
+				BigDecimal subtotal = rs.getBigDecimal("subtotal");
+				int cantidadRecibida = rs.getInt("catidad_recibida");
+				DetallePedido dp = new DetallePedido(codigo, null, prod, cantidad, subtotal, cantidadRecibida);
+
+				Date fecha = rs.getDate("fecha");
+				String estadoP = rs.getString("estado_pedido");
+				EstadoPedido estadoPedido = new EstadoPedido(estadoP, null);
+
+				String proveedor = rs.getString("proveedor");
+				Proveedor proveedorA = new Proveedor(proveedor, null, null, null, null, null);
+
+				p = new Pedido(cabeceraPedido, proveedorA, fecha, estadoPedido, new ArrayList<>());
+				p.getDetalles().add(dp);
+
+				listPedidos.add(p);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new KrakeDevException("Error al recuperar los pedidos. Detalle: " + e.getMessage());
+		} catch (KrakeDevException e) {
+			e.printStackTrace();
+
+		}
+
+		return listPedidos;
 	}
 }
